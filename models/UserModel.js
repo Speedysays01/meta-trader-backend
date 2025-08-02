@@ -1,0 +1,35 @@
+import mongoose from "mongoose";
+
+const { Schema, model } = mongoose;
+
+const UserSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true,
+  },
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 6,
+  },
+
+  funds: { 
+    type: Number, default: 100000 
+  },
+});
+
+const UserModel = model("User", UserSchema);
+
+export default UserModel;
